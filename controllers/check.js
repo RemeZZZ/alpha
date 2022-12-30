@@ -7,7 +7,7 @@ env.config();
 export async function check(request, response) {
   const { inn, phone } = request.body;
 
-  requests.push(async () => {
+  queue.push(async () => {
     const result = await fetch(
       'https://partner.alfabank.ru/public-api/v2/checks',
       {

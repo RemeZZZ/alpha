@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import router from './routes/index.js';
 import { requestLogger, errorLogger } from './middlewares/logger.js';
 import cors from './middlewares/cors.js';
+import { queue } from './store/index.js';
 
 const app = express();
 
@@ -25,3 +26,11 @@ app.use(errorLogger);
 app.listen(3101, () => {
   console.log('App listening on port 3101');
 });
+
+setInterval(() => {
+  const func = queue.shift();
+
+  if (func) {
+    func();
+  }
+}, 500);

@@ -1,1 +1,1 @@
-export const results = {};
+export const queue = [];

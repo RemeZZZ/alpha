@@ -35,8 +35,15 @@ export async function check(request, response) {
       },
     );
 
+    const error =
+      result.status === 200 ? null : (await result.json())?.errors?.[0];
+
     const finaly =
-      result.status === 200 ? 'Да' : result.status === 403 ? 'Нет' : 'Хз';
+      result.status === 200
+        ? 'Да'
+        : error?.code === 'UNACCEPTABLE_COMPANY'
+        ? 'Нет'
+        : 'Хз';
 
     response.status(200).send({
       payload: {

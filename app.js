@@ -33,4 +33,4 @@ setInterval(() => {
   if (func) {
     func();
   }
-}, 500);
+}, 200);

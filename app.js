@@ -23,8 +23,8 @@ app.use(router);
 
 app.use(errorLogger);
 
-app.listen(3101, () => {
-  console.log('App listening on port 3101');
+app.listen(3111, () => {
+  console.log('App listening on port 3111');
 });
 
 setInterval(() => {
